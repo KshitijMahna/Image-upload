@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <title>Login</title>
+</head>
+<body>
+    
+    <div class="card-wrapper">
+
+        <div class="card">
+
+            {% with messages = get_flashed_messages(with_categories = true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div>
+                            {{ message }}
+                        </div>
+                    {%endfor%}
+                {% endif %}
+            {% endwith %}
+
+            <form name="login_form" method="POST">
+
+                {{ form.hidden_tag() }}
+
+                {{form.email.label()}}
+
+                {% if form.email.errors %}
+                    {{form.email(class="field")}}
+                    <div>
+                        {% for error in form.email.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.email(class="field")}}
+                {% endif %}
+
+
+                {{form.password.label()}}
+                
+                {% if form.password.errors %}
+                    {{form.password(class="field")}}
+                    <div>
+                        {% for error in form.password.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.password(class="field")}}
+                {% endif %}
+                
+
+                {{form.submit(class="btn")}}
+
+
+            </form>
+
+            <a href="{{ url_for('glogin') }}" class="btn btn-google">Login with google</a>
+
+        </div>
+
+    </div>
+
+    <div class="card-link-login">
+        <small>
+            Don't have an account? <a href="{{ url_for('register') }}" class="anchor">Sign Up</a>
+        </small>
+    </div>
+
+</body>
+</html>

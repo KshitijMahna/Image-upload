@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <title>Register</title>
+</head>
+<body>
+    
+    <div class="card-wrapper">
+
+        <div class="card">
+
+            <form name="signup_form" method="POST">
+                {{ form.hidden_tag() }}
+
+                {{form.name.label()}}
+
+                {% if form.name.errors %}
+                    {{form.name(class="field")}}
+                    <div>
+                        {% for error in form.name.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.name(class="field")}}
+                {% endif %}
+
+
+                {{form.email.label()}}
+
+                {% if form.email.errors %}
+                    {{form.email(class="field")}}
+                    <div>
+                        {% for error in form.email.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.email(class="field")}}
+                {% endif %}
+
+
+                {{form.password.label()}}
+                
+                {% if form.password.errors %}
+                    {{form.password(class="field")}}
+                    <div>
+                        {% for error in form.password.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.password(class="field")}}
+                {% endif %}
+
+
+                {{form.confirm_password.label()}}
+
+                {% if form.confirm_password.errors %}
+                    {{form.confirm_password(class="field")}}
+                    <div>
+                        {% for error in form.confirm_password.errors %}
+                            <span> {{ error }} </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.confirm_password(class="field")}}
+                {% endif %}
+
+
+                {{form.submit(class="btn")}}
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="card-link">
+        <small>
+            Already have an account? <a href="{{ url_for('login') }}" class="anchor">Log In</a>
+        </small>
+    </div>
+
+</body>
+</html>

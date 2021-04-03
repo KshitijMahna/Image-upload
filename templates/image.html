@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/image.css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/zoom.js">
+
+    </script>
+
+    <script type="text/javascript">
+
+    jQuery(document).ready(function($){ 
+
+        $('#myimage').addpowerzoom()
+
+        $('img.vacation').addpowerzoom({
+            defaultpower: 2,
+            powerrange: [2,5],
+            largeimage: null,
+            magnifiersize: [200,200] 
+        })
+        
+
+    })
+
+    </script>
+
+    <title>Image</title>
+</head>
+<body>
+    <h1>{{ filename }}</h1>
+    <br>
+    <div class="container">
+	    
+		  <img id="myimage" src= "/static/images/{{ filename }}" />
+		
+    </div>
+</body>
+</html>
